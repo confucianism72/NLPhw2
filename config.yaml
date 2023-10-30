@@ -1,0 +1,25 @@
+model:
+  scale_grad_by_freq: true
+  fix_glove: false
+  LSTM:
+    input_size: 300
+    hidden_size: 512
+    num_layers: 1
+    dropout: 0.0
+    bidirectional: false
+  output_dim: 10000
+  use_previous_state: false
+  dropout: 0.0
+train:
+  num_epochs: 100
+  learning_rate: 0.0002
+  weight_decay: 2.0e-05
+  train_dataLoader:
+    type: shuffle
+    batch_size: 8
+    seq_len: 512
+data:
+  train: ../penn-treebank/ptb.train.txt
+  valid: ../penn-treebank/ptb.valid.txt
+  test: ../penn-treebank/ptb.test.txt
+device: cuda:0
